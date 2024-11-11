@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Programs - Venture Hub</title>
+    <link rel="stylesheet" href="../../assets/styles/styles.css">
+    <link rel="stylesheet" href="../../assets/styles/search.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="search-content">
+        <div class="search-tag">
+            FIND OPPORTUNITIES
+        </div>
+        
+        <h1 class="search-title">Discover the Perfect Support for Your Venture</h1>
+
+        <div class="search-form">
+            <div class="form-group">
+                <label for="service">What kind of service do you need?</label>
+                <select id="service" class="form-control">
+                    <option value="">Select a service</option>
+                    <option value="incubation">Find Incubation Programs</option>
+                    <option value="investors">Find Investors</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sector">Business Sector</label>
+                <select id="sector" class="form-control">
+                    <option value="">Select a sector</option>
+                    <option value="technology">Technology</option>
+                    <option value="agriculture">Agriculture</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="education">Education</option>
+                    <option value="finance">Finance</option>
+                    <option value="retail">Retail</option>
+                    <option value="manufacturing">Manufacturing</option>
+                    <option value="energy">Energy</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="province">Province</label>
+                <select id="province" class="form-control">
+                    <option value="">Select a province</option>
+                    <option value="gauteng">Gauteng</option>
+                    <option value="western-cape">Western Cape</option>
+                    <option value="eastern-cape">Eastern Cape</option>
+                    <option value="kwazulu-natal">KwaZulu-Natal</option>
+                    <option value="free-state">Free State</option>
+                    <option value="mpumalanga">Mpumalanga</option>
+                    <option value="limpopo">Limpopo</option>
+                    <option value="north-west">North West</option>
+                    <option value="northern-cape">Northern Cape</option>
+                </select>
+            </div>
+
+            <button class="search-button">
+                <i data-lucide="search" size="18"></i>
+                Search Opportunities
+            </button>
+        </div>
+
+        <div class="search-animation-modal" style="display: none;">
+            <button class="close-modal">
+                <i data-lucide="x" size="24"></i>
+            </button>
+            <div class="search-rings">
+                <div class="ring ring1"></div>
+                <div class="ring ring2"></div>
+                <div class="ring ring3"></div>
+                <div class="ring ring4"></div>
+                <div class="searching-text">Searching for opportunities...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store the original display style of the form
+        const searchForm = document.querySelector('.search-form');
+        const originalDisplay = window.getComputedStyle(searchForm).display;
+
+        document.querySelector('.search-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            searchForm.style.display = 'none';
+            document.querySelector('.search-animation-modal').style.display = 'flex';
+        });
+
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.querySelector('.search-animation-modal').style.display = 'none';
+            searchForm.style.display = originalDisplay; // Restore original display style
+        });
+
+        // Initialize the X icon
+        lucide.createIcons();
+    </script>
+</body>
+</html>
