@@ -1,8 +1,38 @@
 function createMessage(content, isUser = false) {
     const message = document.createElement('div');
     message.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-    message.textContent = content;
+    
+    // If it's HTML content (like file preview), use innerHTML
+    if (content.includes('<div')) {
+        message.innerHTML = content;
+        // Reinitialize Lucide icons for the new content
+        lucide.createIcons({
+            attrs: {
+                class: "message-icon"
+            }
+        });
+    } else {
+        // For plain text messages
+        message.textContent = content;
+    }
     return message;
+}
+
+function createFilePreview(file) {
+    const fileExt = file.name.split('.').pop().toLowerCase();
+    const fileSize = (file.size / 1024).toFixed(0) + ' kB';
+    
+    return `
+        <div class="file-preview">
+            <div class="file-icon">
+                <i data-lucide="${fileExt === 'pdf' ? 'file-text' : 'image'}" size="24"></i>
+            </div>
+            <div class="file-info">
+                <span class="file-name">${file.name}</span>
+                <span class="file-details">${fileExt.toUpperCase()} • ${fileSize}</span>
+            </div>
+        </div>
+    `;
 }
 
 function addMessageToChat(messageElement) {
@@ -74,7 +104,6 @@ if (uploadButton && fileInput) {
     fileInput.addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Get the selected context from radio buttons
             const selectedRadio = document.querySelector('input[type="radio"]:checked');
             const context = selectedRadio ? selectedRadio.value : 'analyze';
 
@@ -83,8 +112,13 @@ if (uploadButton && fileInput) {
             formData.append('context', context);
 
             try {
-                // Show upload message
-                const uploadMessage = `Uploading and analyzing: ${file.name}`;
+                // Show upload message with file preview
+                const uploadMessage = `
+                    <div class="upload-message">
+                        ${createFilePreview(file)}
+                        <p>Analyzing document...</p>
+                    </div>
+                `;
                 addMessageToChat(createMessage(uploadMessage, true));
 
                 const response = await fetch('/api/analyze', {

@@ -287,3 +287,52 @@
 .upload-button:hover {
     background: rgba(255, 255, 255, 0.1);
 }
+
+.upload-message {
+    background: var(--general-color);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    max-width: 400px;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.file-icon {
+    background: var(--hero-color);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.file-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.file-name {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.file-details {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+}
+
+.upload-message p {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
