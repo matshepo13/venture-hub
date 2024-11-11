@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Assistant - Abu Studio</title>
+    <link rel="stylesheet" href="../../assets/styles/styles.css">
+    <link rel="stylesheet" href="../../assets/styles/chat.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar -->
+        <div class="chat-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>Venture-Hub</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-buttons">
+                <button class="new-chat">
+                    <i data-lucide="plus-circle" size="18"></i>
+                    New Chat
+                </button>
+                
+                <div class="chat-history">
+                    <button class="history-item active">
+                        <i data-lucide="message-circle" size="18"></i>
+                        Assignment Help
+                    </button>
+                    <button class="history-item">
+                        <i data-lucide="message-circle" size="18"></i>
+                        Topic Research
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <button class="settings-btn">
+                    <i data-lucide="settings" size="18"></i>
+                    Settings
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="chat-main">
+            <div class="chat-messages">
+                <div class="welcome-message">
+                    <h1>How can I help you today?</h1>
+                    <p>Ask me anything about your assignments or academic work</p>
+                    
+                    <div class="capabilities-grid">
+                        <a href="#" class="capability-card">
+                            <div class="card-icon">
+                                <i data-lucide="briefcase" size="24"></i>
+                            </div>
+                            <h3>Business Evaluation</h3>
+                            <div>
+                                <input type="radio" id="analyze" name="business_eval" value="analyze">
+                                <label for="analyze">Analyze business idea</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="evaluate" name="business_eval" value="evaluate">
+                                <label for="evaluate">Evaluate business plans</label>
+                            </div>
+                        </a>
+                        <a href="#" class="capability-card">
+                            <div class="card-icon">
+                                <i data-lucide="bar-chart" size="24"></i>
+                            </div>
+                            <h3>Market Research </h3>
+                            <div>
+                                <input type="radio" id="industry" name="market_research" value="industry">
+                                <label for="industry">Deep dive into industry data and consumer insights</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="analysis" name="market_research" value="analysis">
+                                <label for="analysis">Generate detailed market analysis reports</label>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="capability-card">
+                            <div class="card-icon">
+                                <i data-lucide="presentation" size="24"></i>
+                            </div>
+                            <h3>Pitch Deck Generation</h3>
+                            <div>
+                                <input type="radio" id="investor" name="pitch_deck" value="investor">
+                                <label for="investor">Create compelling investor presentations</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="proposal" name="pitch_deck" value="proposal">
+                                <label for="proposal">Structure professional business proposals</label>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="messages-container">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <div class="input-container">
+                    <button class="upload-button">
+                        <i data-lucide="image" size="18"></i>
+                    </button>
+                    <textarea placeholder="Enter a prompt here..."></textarea>
+                    <button class="send-button">
+                        <i data-lucide="send" size="18"></i>
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*,.pdf,.doc,.docx" style="display: none">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="../../backend/js/chat.js"></script>
+</body>
+</html>

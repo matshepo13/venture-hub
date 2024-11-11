@@ -1,0 +1,213 @@
+:root {
+    --primary-color: #000000;
+    --secondary-color: #666666;
+    --accent-color: #1A1A1A;
+    --background-color: linear-gradient(to right, #92E4E4, #ffffff);
+    --text-color: #333333;
+    --nav-gray: #666666;
+    --hero-color: #69E4E3;
+    --general-color: #ffffff;
+    --cards-hover: #A4F4F3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}
+/* Navbar Styles */
+.navbar {
+    padding: 0.75rem 2rem;
+    background: var(--general-color);
+    border-bottom: 1px solid #eee;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-logo img {
+    height: 32px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--nav-gray);
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.get-started-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    background: var(--background-color);
+    width: 100%;
+    position: relative;
+}
+
+.hero-wrapper {
+    width: 100%;
+    background: var(--background-color);
+    padding: 1px 0;  /* To prevent margin collapse */
+}
+
+.hero-tag {
+    background: rgba(255, 165, 0, 0.1);
+    border-radius: 50px;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.tag-icon {
+    font-size: 1.2rem;
+}
+
+.tag-text {
+    color: #FF9900;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-family: 'Remora Corp W4', sans-serif;
+    font-weight: bold;
+    font-size: 3.8rem;
+    line-height: 1.1;
+    color: var(--primary-color);
+    max-width: 900px;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    max-width: 800px;
+    margin: 0.5rem auto;
+    line-height: 1.5;
+}
+
+.ai-illustration {
+    width: 100%;
+    max-width: 600px;
+    margin: 0.5rem auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@font-face {
+    font-family: 'Remora Corp W4';
+    src: url('../fonts/RemoraCorpW4-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.primary-btn {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn .arrow {
+    font-size: 1.2rem;
+}
+
+.secondary-btn {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.secondary-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
