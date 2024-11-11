@@ -48,7 +48,7 @@ function hideWelcomeMessage() {
 
 // Handle radio button selections
 document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
+    radio.addEventListener('change', async (e) => {
         const label = document.querySelector(`label[for="${e.target.id}"]`).textContent;
         const category = e.target.name.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
         
@@ -58,11 +58,18 @@ document.querySelectorAll('input[type="radio"]').forEach(radio => {
         const userMessage = `Hello Venture-bot, please assist me with: ${label}`;
         addMessageToChat(createMessage(userMessage, true));
         
-        // Simulate bot response
-        setTimeout(() => {
-            const botResponse = `I'll help you with ${label.toLowerCase()}. What specific aspects of ${category} would you like to explore?`;
-            addMessageToChat(createMessage(botResponse, false));
-        }, 1000);
+        // Show typing indicator
+        const typingIndicator = showTypingIndicator();
+        
+        // Wait for animation
+        await new Promise(resolve => setTimeout(resolve, 4000));
+        
+        // Remove typing indicator
+        typingIndicator.remove();
+        
+        // Show bot response
+        const botResponse = `I'll help you with ${label.toLowerCase()}. What specific aspects of ${category} would you like to explore?`;
+        addMessageToChat(createMessage(botResponse, false));
     });
 });
 
@@ -70,17 +77,25 @@ document.querySelectorAll('input[type="radio"]').forEach(radio => {
 const sendButton = document.querySelector('.send-button');
 const textarea = document.querySelector('.input-container textarea');
 
-sendButton.addEventListener('click', () => {
+sendButton.addEventListener('click', async () => {
     const message = textarea.value.trim();
     if (message) {
+        hideWelcomeMessage();
         addMessageToChat(createMessage(message, true));
         textarea.value = '';
         
-        // Simulate bot response
-        setTimeout(() => {
-            const botResponse = "I understand your request. Let me help you with that. What additional details can you provide?";
-            addMessageToChat(createMessage(botResponse, false));
-        }, 1000);
+        // Show typing indicator
+        const typingIndicator = showTypingIndicator();
+        
+        // Simulate bot response after 4 seconds
+        await new Promise(resolve => setTimeout(resolve, 4000));
+        
+        // Remove typing indicator
+        typingIndicator.remove();
+        
+        // Show bot response
+        const botResponse = "I understand your request. Let me help you with that. What additional details can you provide?";
+        addMessageToChat(createMessage(botResponse, false));
     }
 });
 
@@ -120,11 +135,20 @@ if (uploadButton && fileInput) {
                     </div>
                 `;
                 addMessageToChat(createMessage(uploadMessage, true));
-
+                
+                // Show typing indicator
+                const typingIndicator = showTypingIndicator();
+                
                 const response = await fetch('/api/analyze', {
                     method: 'POST',
                     body: formData
                 });
+
+                // Wait for 4 seconds before showing response
+                await new Promise(resolve => setTimeout(resolve, 4000));
+                
+                // Remove typing indicator
+                typingIndicator.remove();
 
                 const data = await response.json();
                 if (data.error) {
@@ -141,4 +165,33 @@ if (uploadButton && fileInput) {
             fileInput.value = '';
         }
     });
+}
+
+function showTypingIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'typing-indicator';
+    indicator.innerHTML = `
+        <div class="bot-avatar-small">
+            <i data-lucide="bot" size="18"></i>
+        </div>
+        <span class="typing-text">Venture-Bot is thinking</span>
+        <div class="typing-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    `;
+    
+    const messagesContainer = document.querySelector('.messages-container');
+    messagesContainer.appendChild(indicator);
+    indicator.scrollIntoView({ behavior: 'smooth' });
+    
+    // Initialize the bot icon
+    lucide.createIcons({
+        attrs: {
+            class: "message-icon"
+        }
+    });
+    
+    return indicator;
 }

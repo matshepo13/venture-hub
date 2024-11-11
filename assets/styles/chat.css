@@ -336,3 +336,132 @@
     color: var(--secondary-color);
     font-size: 0.9rem;
 }
+
+.ai-response {
+    background: var(--general-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.response-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bot-avatar {
+    background: var(--hero-color);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bot-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.response-content {
+    color: var(--secondary-color);
+    line-height: 1.6;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary-color);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.2rem;
+}
+
+.bullet-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 8px 0;
+    padding-left: 8px;
+}
+
+.bullet-point i {
+    color: var(--hero-color);
+    margin-top: 4px;
+}
+
+.assessment-EXCELLENT {
+    color: #10B981;
+    font-weight: 600;
+}
+
+.assessment-GOOD {
+    color: #3B82F6;
+    font-weight: 600;
+}
+
+.assessment-FAIR {
+    color: #F59E0B;
+    font-weight: 600;
+}
+
+
+.typing-indicator {
+    background: var(--general-color);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 280px;
+    margin: 0.5rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+}
+
+.bot-avatar-small {
+    background: var(--hero-color);
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.typing-text {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 6px;
+    height: 6px;
+    background: var(--cards-hover);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: dotFade 1.4s infinite;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotFade {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+}

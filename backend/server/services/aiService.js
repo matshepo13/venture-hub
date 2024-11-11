@@ -21,24 +21,39 @@ class AIService {
     formatResponse(context, text) {
         const intro = `<div class="ai-response">
             <div class="response-header">
-                <i data-lucide="brain" size="24"></i>
-                <span>Venture-Bot</span>
-            </div>`;
+                <div class="bot-avatar">
+                    <i data-lucide="bot" size="24"></i>
+                </div>
+                <span class="bot-name">Venture-Bot</span>
+            </div>
+            <div class="response-content">`;
 
-        let formattedText = text.replace(/\n\n/g, '</p><p>');
-        
+        // Format the greeting and assessment
+        let formattedText = text.replace(/(EXCELLENT|GOOD|FAIR)/g, '<span class="assessment-$1">$1</span>');
+
+        // Format section headers with icons
+        const sectionIcons = {
+            'Market Need': 'target',
+            'Innovative Solution': 'lightbulb',
+            'Business Model': 'briefcase',
+            'Implementation Plan': 'git-branch',
+            'Recommendations': 'check-circle'
+        };
+
+        Object.entries(sectionIcons).forEach(([section, icon]) => {
+            formattedText = formattedText.replace(
+                new RegExp(`${section}`, 'g'),
+                `<h3 class="section-header">
+                    <i data-lucide="${icon}" size="20"></i>
+                    ${section}
+                </h3>`
+            );
+        });
+
         // Format bullet points
-        formattedText = formattedText.replace(/•\s(.*)/g, '<li><i data-lucide="check-circle" size="16"></i>$1</li>');
-        
-        // Format sections
-        formattedText = formattedText.replace(
-            /(Market Need|Innovative Solution|Business Model|Implementation Plan|Recommendations):/g,
-            '<h3><i data-lucide="target" size="20"></i> $1</h3>'
-        );
+        formattedText = formattedText.replace(/•(.*)/g, '<div class="bullet-point"><i data-lucide="check" size="16"></i>$1</div>');
 
-        const outro = `</div>`;
-
-        return `${intro}<div class="response-content">${formattedText}</div>${outro}`;
+        return `${intro}${formattedText}</div></div>`;
     }
 
     buildPrompt(context, text) {
