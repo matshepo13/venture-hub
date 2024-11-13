@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/fir
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDkIJxkGq2fWLNswDbGc3UbQ21eV2V9fIM",
+  apiKey: "",
   authDomain: "venture-c06fc.firebaseapp.com",
   projectId: "venture-c06fc",
   storageBucket: "venture-c06fc.firebasestorage.app",
